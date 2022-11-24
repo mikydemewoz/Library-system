@@ -16,7 +16,7 @@ spring:
       database: BookCommand
   kafka:
     bootstrap-servers: localhost:9092
-    consumer:
+    producer:
       group-id: gid
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
