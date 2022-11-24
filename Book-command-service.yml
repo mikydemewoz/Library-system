@@ -1,0 +1,30 @@
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://localhost:8761/eureka
+spring:
+  application:
+    name: Book-command-service
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: BookCommand
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: gid
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              package: kafka
