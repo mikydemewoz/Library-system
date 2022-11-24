@@ -1,0 +1,35 @@
+eureka:
+  client:
+    service-url:
+      defaultZone:
+        http://localhost:8761/eureka
+spring:
+  zipkin:
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      probability: 1.0
+  cloud:
+    gateway:
+      routes:
+        - id: book-command-service
+          uri: lb://Book-command-service
+          predicates:
+            - Path=/api/bookcommand/**
+        - id: book-query-service
+          uri: lb://Book-queries-service
+          predicates:
+            - Path=/api/bookquery/**
+        - id: borrowing-service
+          uri: lb://Borrowing-service
+          predicates:
+            - Path=/api/borrow/**
+        - id: customer-service
+          uri: lb://Customer-service
+          predicates:
+            - Path=/api/customer/**
+        - id: review-service
+          uri: lb://Review-service
+          predicates:
+            - Path=/api/review/**
+
