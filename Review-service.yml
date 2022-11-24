@@ -14,3 +14,15 @@ spring:
       host: localhost
       port: 27017
       database: review
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      group-id: gid
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              package: kafka
